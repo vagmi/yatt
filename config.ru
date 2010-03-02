@@ -1,4 +1,5 @@
 require 'rubygems'
 require 'sinatra'
-require 'yatt.rb'
+require 'sha1'
+require 'yatt'
 run Sinatra::Application
