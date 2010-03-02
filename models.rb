@@ -25,4 +25,18 @@ end
 
 class Task
   #do some magic here
+  include MongoMapper::Document
+
+	key :title
+	key :description
+        key :tags
+	key :start_time
+	key :end_time
+	key :is_completed
+	key :deadline
+        key :priority
+	
+	timestamps!
+
+	#validates_uniqueness_of :title
 end

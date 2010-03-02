@@ -1,0 +1,35 @@
+<form method="post">
+   <h1>Add a New Task</h1>
+    <table>
+      <tr>
+        <td>Title:</td><td><input type="text" name="task[title]" /></td>
+      </tr>
+      <tr>
+        <td>Description:</td> <td><input type="text" name="task[desc]" /></td>
+      </tr>
+      <tr>
+        <td>Tags:</td> <td><input type="text" name="task[tags]" /></td>
+      </tr>
+      <tr>
+        <td>Start Time:</td> <td><input type="text" name="task[start_date]" /></td>
+      </tr>
+      <tr>
+        <td>End Time:</td> <td><input type="text" name="task[end_date]" /></td>
+      </tr>
+      <tr>
+        <td>Deadlne:</td> <td><input type="text" name="task[deadline]" /></td>
+      </tr>
+      <tr>
+        <td>Priority:</td> <td><select name="task[priority]" />
+		<option value="1">Critical
+		<option value="2">Major
+		<option value="3">Minor
+                </select></td>
+      </tr>
+      <tr>
+        <td>Completed:</td> <td><input type="radio" name="task[choice]" value=1 />Yes <input type="radio" name="task[choice]" value=0 />No</td>
+      </tr>
+      <tr><td> <input type="submit" /></td></tr>
+   </table>
+</form>
+

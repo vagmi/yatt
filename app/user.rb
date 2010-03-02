@@ -23,7 +23,8 @@ post "/login" do
 	enc_pass = SHA1.hexdigest(user_salt + user_entered_password)
 	if (@user.password == enc_pass)
 		session[:uid] = @user.id.to_s
-		"Welcome"
+		#"Welcome"
+                redirect "/add_task"
 	else
 		"Sorry, you are not a valid user!"
 	end
@@ -33,3 +34,4 @@ get "/logout" do
 	session[:uid] = nil
 	redirect "/login"
 end
+
