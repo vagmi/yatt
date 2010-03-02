@@ -1,5 +1,31 @@
-<form method="post">
-	Username:<input type="text" name="user[username]" />
-	Password:<input type="password" name="user[password]" />
-	<input type="submit" />
-</form>
+<html>
+	<head>
+		<title>YATT</title>
+	</head>
+	<body>
+		<center><h1>YATT - Yet Another Task Tracker</h1></center>
+		
+		<center>
+			<form method="post" action="/login">
+				<table>
+					<tr>
+						<td>Username:</td>
+						<td><input type="text" name="user[username]" /></td>
+					</tr>
+					<tr>
+						<td>Password:</td>
+						<td><input type="password" name="user[password]" /></td>
+					</tr>
+					<tr>
+						<td><a href="/register">Register</a></td>
+						<td><input type="submit" value="Login"/></td>
+					</tr>
+				</table>
+			</form>
+			<% if @login_failure %>
+				Sorry, You are not authorized. Kindly register.
+			<% end %>
+
+		</center>
+	</body>
+</html>

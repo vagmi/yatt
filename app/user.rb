@@ -1,31 +1,42 @@
 get '/register' do
 	@user = User.new
+	@uniqueness_failure = false
+	@registration_success = false
 	erb :"users/register"
 end
 
 post "/register" do
 	@user = User.new(params[:user])
 	if @user.save
-		"Successfully Registered!!"
+		@registration_success = true
+		erb :"users/register"
 	else
-		"Username already taken"
+		@uniqueness_failure = true
+		erb :"users/register"
 	end
 end
 
 get "/login" do
+	@login_failure = false
 	erb:"users/login"
 end
 
 post "/login" do
 	@user = User.find_by_username(params[:user][:username])
-	user_entered_password = params[:user][:password]
-	user_salt = @user.password_salt
-	enc_pass = SHA1.hexdigest(user_salt + user_entered_password)
-	if (@user.password == enc_pass)
-		session[:uid] = @user.id.to_s
-		"Welcome"
+	if(@user != nil)	
+		user_entered_password = params[:user][:password]
+		user_salt = @user.password_salt
+		enc_pass = SHA1.hexdigest(user_salt + user_entered_password)
+		if (@user.password == enc_pass)
+			session[:uid] = @user.id.to_s
+			"Welcome"
+		else
+			@login_failure = true
+			erb :"users/login"
+		end
 	else
-		"Sorry, you are not a valid user!"
+		@login_failure = true
+		erb :"users/login"
 	end
 end
 
@@ -33,3 +44,9 @@ get "/logout" do
 	session[:uid] = nil
 	redirect "/login"
 end
+
+get "/" do
+	@login_failure = false
+	erb:"users/login"
+end
+

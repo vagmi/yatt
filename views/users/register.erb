@@ -1,6 +1,41 @@
-<form method="post" >
-	Username:<input type="text" name="user[username]" />
-	email:<input type="text" name="user[email]" />
-	Password:<input type="password" name="user[password]" />
-	<input type="submit" />
-</form>
+<html>
+	<head>
+		<title>YATT</title>
+	</head>
+	<body>
+		<center><h1>YATT - Yet Another Task Tracker</h1></center>
+		<center><h3>User Registration</h3></center>
+
+		<center>
+			<form method="post">
+				<table>
+					<tr>
+						<td>Username:</td>
+						<td><input type="text" name="user[username]" /></td>
+					</tr>
+					<tr>
+						<td>Password:</td>
+						<td><input type="password" name="user[password]" /></td>
+					</tr>
+					<tr>
+						<td>Email:</td>
+						<td><input type="text" name="user[email]" /></td>
+					</tr>
+
+					<tr>
+						<td><a href="/login">Back</a></td>
+						<td><input type="submit" value="Register"/></td>
+					</tr>
+				</table>
+			</form>
+			<% if @uniqueness_failure %>
+				Username already taken.
+			<% end %>
+			<% if @registration_success %>
+				Successfully Registered.
+			<% end %>
+
+		</center>
+	</body>
+</html>
+
